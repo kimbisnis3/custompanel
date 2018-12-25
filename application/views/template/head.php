@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title class="title"></title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <link href="<?php echo base_url('assets/lte/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -15,6 +15,7 @@
         <link href="<?php echo base_url('assets/lte/plugins/datepicker/datepicker3.css') ?>" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url('assets/lte/plugins/daterangepicker/daterangepicker.css') ?>" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?php echo base_url('assets/lte/plugins/datepicker/datepicker3.css') ?>">
+        <link href="<?php echo base_url('assets/lte/plugins/pace/pace.css') ?>" rel="stylesheet" type="text/css" />
         <style>
         #warning {
         color: white;

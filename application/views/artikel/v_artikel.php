@@ -5,19 +5,17 @@
   ?>
 
 <section class="content-header">
-  <h1>
-  <?php echo $title; ?>
+  <h1 class="title">
+  
   </h1>
   <ol class="breadcrumb">
     <li><a href="<?php echo site_url(); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><?php echo $title; ?></li>
+    <li class="active title"></li>
   </ol>
 </section>
-<!-- MODAL INPUT-->
-<!-- Modal -->
+
 <div class="modal fade" id="modal-data" role="dialog" data-backdrop="static">
   <div class="modal-dialog">
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -34,10 +32,6 @@
                   <input type="text" class="form-control" name="judul">
                 </div>
                 <div class="form-group">
-                  <label>Gambar</label>
-                  <input type="file" class="form-control" name="gambar" id="gambar" >
-                </div>
-                <div class="form-group">
                   <label>Artikel</label>
                   <textarea class="form-control" rows="7" name="artikel" id="artikel"></textarea>
                 </div>
@@ -47,19 +41,19 @@
                 </div>
               </div>
             </div>
+            </form>
           </div>
         </div>
-      </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning btn-flat" data-dismiss="modal">Batal</button>
         <button type="button" id="btnSave" onclick="simpan()" class="btn btn-primary btn-flat">Simpan</button>
       </div>
     </div>
   </div>
-  </div>  <!-- END MODAL INPUT-->
+  </div> 
   <div id="modal-konfirmasi" class="modal fade" role="dialog">
     <div class="modal-dialog modal-sm">
-      <!-- Modal content-->
+
       <div class="modal-content">
         <div class="modal-body">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -79,7 +73,7 @@
         <div class="box-header">
         </form>
         <button class="btn btn-success btn-flat" onclick="refresh()"  title="Cek Data"><i class="glyphicon glyphicon-refresh"></i> Refresh</button>
-        <button class="btn btn-warning btn-flat"onclick="add_data()" ><i class="fa fa-plus"></i> Tambah</button>
+        <button class="btn btn-warning btn-flat" onclick="add_data()" ><i class="fa fa-plus"></i> Tambah</button>
       </div>
       <div class="box-body">
         <div class="table-responsive mailbox-messages">
@@ -129,17 +123,28 @@ $this->load->view('template/js');
   $(document).ready(function() {
       conpage('Artikel', 'artikel', '_');
       dtb('table', 'artikel/setview', {}, column);
+      Pace.stop();
 
   });
 
   function simpan() {
     data = $('#form-data').serialize();
-    save('artikel/tambah','post',data,'table');
+    save('artikel/tambah','artikel/edit','post',data,'table');
+  }
+
+  function add_data(){
+    inputmodal('add','modal-data','form-data');
+  }
+
+  function edit_data(iddata){
+    editmodal('id','artikel/edit',{ id : iddata});
   }
 
   function refresh(){
     reload_table('table');
   }
+
+
 
 
 </script>

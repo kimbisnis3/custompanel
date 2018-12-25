@@ -11,13 +11,6 @@
 			background:#9adea9 ; 
 		}
 	</style>
-	<link rel="stylesheet" href="<?php echo base_url('assets/lte/plugins/datatables/dataTables.bootstrap.css')?>">
-	<!-- Date Picker -->
-	<link href="<?php echo base_url('assets/lte/plugins/datepicker/datepicker3.css') ?>" rel="stylesheet" type="text/css" />
-	<!-- Daterange picker -->
-	<link href="<?php echo base_url('assets/lte/plugins/daterangepicker/daterangepicker.css') ?>" rel="stylesheet" type="text/css" />
-	<!-- bootstrap wysihtml5 - text editor -->
-	<link href="<?php echo base_url('assets/lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>" rel="stylesheet" type="text/css" />
 	<head>
 		<style>
 		</style>
@@ -45,11 +38,6 @@
 				<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 			</div>
 			<div class="row">
-			<!--
-				<div class="col-xs-8">
-				<?php echo $this->session->flashdata('message');?>
-				</div>-->
-				<!-- /.col -->
 				<div class="col-xs-12">
 					<button type="submit" class="btn btn-success btn-block btn-flat btn-lg">Masuk</button>
 				</div>
@@ -65,30 +53,6 @@
 	<!-- /.login-box-body -->
 </div>
 </body>
-<!-- /.content -->
-<script src="<?php echo base_url('assets/lte/plugins/jQuery/jQuery-2.2.3.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/lte/dist/js/de.js')?>"></script>
-<!-- Bootstrap 3.3.2 JS -->
-<script src="<?php echo base_url('assets/lte/bootstrap/js/bootstrap.min.js') ?>" type="text/javascript"></script>
-<!-- lte App -->
-<script src="<?php echo base_url('assets/lte/dist/js/app.min.js') ?>" type="text/javascript"></script>
-</script>
-<script>
-$( ".contacs" ).addClass( "active" );
-</script>
-<script>
-$(document).ready(function(){
-$('[data-toggle="tooltip"]').tooltip();
-});
-</script>
-<?php
-$this->load->view('template/sidebar_theme');
-?>
-<script>
-$(document).ready(function(){
-setTimeout(function() {
-$('.alrt-success').fadeOut('fast');
-}, 2000); // <-- time in milliseconds
-});
-</script>
+
+<script type="text/javascript"></script>
 </html>
