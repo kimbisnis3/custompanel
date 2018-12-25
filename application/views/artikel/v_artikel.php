@@ -39,18 +39,11 @@
                 </div>
                 <div class="form-group">
                   <label>Artikel</label>
-                  <textarea class="form-control" rows="7" name="artikelx" id="artikelx"></textarea>
-                </div>
-                <div class="form-group" style="display : none;">
-                  <label>Artikel</label>
                   <textarea class="form-control" rows="7" name="artikel" id="artikel"></textarea>
                 </div>
                 <div class="form-group">
                   <label>Keterangan</label>
                   <input type="text" class="form-control" name="ket" >
-                </div>
-                <div class="form-group">
-                  <input type="hidden" name="path" id="path">
                 </div>
               </div>
             </div>
@@ -59,7 +52,7 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning btn-flat" data-dismiss="modal">Batal</button>
-        <button type="button" id="btnSave" onclick="savefile()" class="btn btn-primary btn-flat">Simpan</button>
+        <button type="button" id="btnSave" onclick="simpan()" class="btn btn-primary btn-flat">Simpan</button>
       </div>
     </div>
   </div>
@@ -85,7 +78,7 @@
       <div class="box box-info">
         <div class="box-header">
         </form>
-        <button class="btn btn-success btn-flat" onclick="reload_table()"  title="Cek Data"><i class="glyphicon glyphicon-refresh"></i> Refresh</button>
+        <button class="btn btn-success btn-flat" onclick="refresh()"  title="Cek Data"><i class="glyphicon glyphicon-refresh"></i> Refresh</button>
         <button class="btn btn-warning btn-flat"onclick="add_data()" ><i class="fa fa-plus"></i> Tambah</button>
       </div>
       <div class="box-body">
@@ -113,7 +106,6 @@ $this->load->view('template/js');
 ?> 
 
 <script type="text/javascript">
-  var controller = 'artikel';
 
   var column  = [
                 {
@@ -133,6 +125,21 @@ $this->load->view('template/js');
                     "field": "Opsi"
                 }
             ];
+
+  $(document).ready(function() {
+      conpage('Artikel', 'artikel', '_');
+      dtb('table', 'artikel/setview', {}, column);
+
+  });
+
+  function simpan() {
+    data = $('#form-data').serialize();
+    save('artikel/tambah','post',data,'table');
+  }
+
+  function refresh(){
+    reload_table('table');
+  }
 
 
 </script>

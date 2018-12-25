@@ -24,7 +24,7 @@ class Artikel extends CI_Controller {
         $this->load->view($this->indexpage, $data);  
     }
 
-    public function setView(){
+    public function xx(){
         $result     = $this->Unimodel->getdata($this->table);
         $list       = array();
         $no         = 1;
@@ -47,7 +47,7 @@ class Artikel extends CI_Controller {
         echo json_encode(array('data' => $list));
     }
 
-    function json(){
+    function setView(){
         $this->datatables->select('id,judul,artikel,ket');
         $this->datatables->from('fartikel');
         $this->datatables->add_column('option', btnud("$1"), 'id');
@@ -65,7 +65,7 @@ class Artikel extends CI_Controller {
                 'slug'      => slug($this->input->post('judul')),
             );
         $insert = $this->Unimodel->save($this->table,$data);
-        echo json_encode(array("sukses" => TRUE));
+        echo json_encode(array("message" => "sukses"));
     }
 
     public function tambahfile()

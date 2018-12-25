@@ -28,7 +28,7 @@
 
 var table;
 var idx = -1;
-var urlmaindata = "<?php echo site_url('') ?>" + controller + '/json';
+var urlmaindata = "<?php echo site_url('') ?>" + controller + '/setView';
 var urledit = "<?php echo site_url('')?>" + controller + '/edit';
 var urlsave = "<?php echo site_url('')?>" + controller + '/tambah';
 var urlsavefile = "<?php echo site_url('')?>" + controller + '/tambahfile';
@@ -37,36 +37,36 @@ var urlupdatefile = "<?php echo site_url('')?>" + controller + '/updatefile';
 var urlhapus = "<?php echo site_url('')?>" + controller + '/hapus';
 var urlunduh = "<?php echo site_url('')?>" + controller + '/unduh';
 
-     $(".<?php echo $aktifgrup ?>").addClass("active");
-     $(".<?php echo $aktifmenu ?>").addClass("active");
 
-    $(document).ready(function() {
-    
-        $('[data-toggle="tooltip"]').tooltip();
+    function conpage(titlepage,menu,groupmenu){
+        $( "title" ).html(titlepage);
+        $("."+menu).addClass("active");
+        $("."+groupmenu).addClass("active");
+    }
 
-        table = $('#table').DataTable({
+    function dtb(idtb,url,data,col,des = false){
+        idtb = $('#'+idtb).DataTable({
             "processing": true,
             "serverSide": true,
+            "destroy"   : des,
             "ajax": {
-                "url": urlmaindata,
+                "url":  url,
                 "type": "POST",
-                "data": {}
+                "data": data
             },
-            "columns": column 
+            "columns": col 
         });
+    }
 
-
-    });
-
-    function reload_table() {
-        table.ajax.reload(null, false);
+    function reload_table(idtb) {;
+        $('#'+idtb).DataTable().ajax.reload(null, false);
         idx = -1;
     }
 
     function add_data() {
         save_method = 'add';
         $('#form-data')[0].reset();
-        CKEDITOR.instances.artikelx.setData('');
+        // CKEDITOR.instances.artikelx.setData('');
         $('#modal-data').modal('show');
         $('.modal-title').text('Tambahkan Data');
     }
@@ -101,7 +101,23 @@ var urlunduh = "<?php echo site_url('')?>" + controller + '/unduh';
         });
     }
 
-    function save() {
+    function save(url,method,data,idtb) {
+
+        $.ajax({
+            url : url,
+            type: method,
+            data: data,
+            dataType: "JSON",
+            success: function(data) {
+                return data;
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('Error on process');
+            }
+        });
+    }
+
+    function savex() {
         var url;
         artikel = CKEDITOR.instances['artikelx'].getData();
         $('#artikel').val(artikel);
@@ -240,10 +256,10 @@ var urlunduh = "<?php echo site_url('')?>" + controller + '/unduh';
         }, );
     };
 
-    $(function() {
-        CKEDITOR.replace('artikelx')
-            //$('#tugas').wysihtml5()
-    })
+    // $(function() {
+    //     CKEDITOR.replace('artikelx')
+    //         //$('#tugas').wysihtml5()
+    // })
 
     //   $(function(){
 //   $.each(column, function (i, item) {
