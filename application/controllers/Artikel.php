@@ -47,6 +47,13 @@ class Artikel extends CI_Controller {
         echo json_encode(array('data' => $list));
     }
 
+    function json(){
+        $this->datatables->select('id,judul,artikel,ket');
+        $this->datatables->from('fartikel');
+        $this->datatables->add_column('option', btnud("$1"), 'id');
+        return print_r($this->datatables->generate());
+    }
+
     public function tambah()
     {
         $data = array(

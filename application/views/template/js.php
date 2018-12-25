@@ -7,19 +7,13 @@
 </footer>
 </div>
 <div class="control-sidebar-bg"></div>
-<!-- jQuery 2.1.3 -->
 <script src="<?php echo base_url('assets/lte/plugins/jQuery/jQuery-2.2.3.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/lte/dist/js/demo.js')?>"></script>
-<!-- Bootstrap 3.3.2 JS -->
 <script src="<?php echo base_url(); ?>assets/lte/plugins/notify/bootstrap-notify.js"></script>
 <script src="<?php echo base_url('assets/lte/bootstrap/js/bootstrap.min.js') ?>" type="text/javascript"></script>
-<!-- SlimScroll -->
 <script src="<?php echo base_url('assets/lte/plugins/slimScroll/jquery.slimscroll.min.js') ?>" type="text/javascript"></script>
-<!-- FastClick -->
 <script src='<?php echo base_url('assets/lte/plugins/fastclick/fastclick.min.js') ?>'></script>
-<!-- lte App -->
 <script src="<?php echo base_url('assets/lte/dist/js/app.min.js') ?>" type="text/javascript"></script>
-<!-- lte for demo purposes -->
 <script src="<?php echo base_url('assets/lte/plugins/datatables/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/lte/plugins/datatables/dataTables.bootstrap.min.js')?>"></script>
 <script src="<?php echo base_url('assets/lte/plugins/select2/select2.full.min.js')?>"></script>
@@ -29,48 +23,30 @@
 <script src="<?php echo base_url('assets/lte/plugins/datepicker/bootstrap-datepicker.js')?>"></script>
 <script src="<?php echo base_url(); ?>assets/lte/plugins/ckeditor/ckeditor.js"></script>
 <script src="<?php echo base_url('') ?>assets/lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script>
-function showNotif(title, msg, jenis){
-$.notify(
-{
-title  : '<strong>'+title+'</strong>',
-message: msg
-},
-{
-type: jenis,
-z_index: 2000,
-allow_dismiss: true,
-delay: 10,
-animate: {
-enter: 'animated fadeInDown',
-exit: 'animated fadeOutUp'
-},
-},
-);
-};
-</script>
-        <script>
-          $( ".<?php echo $aktifgrup ?>" ).addClass( "active" );
 
-          $( ".<?php echo $aktifmenu ?>" ).addClass( "active" );
-
-        $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-        });
-
-        </script>
-        <script>
-        $(function () {
-          CKEDITOR.replace('artikelx')
-          //$('#tugas').wysihtml5()
-          })
-        </script> 
 <script type="text/javascript">
 
+var table;
+var idx = -1;
+var urlmaindata = "<?php echo site_url('') ?>" + controller + '/json';
+var urledit = "<?php echo site_url('')?>" + controller + '/edit';
+var urlsave = "<?php echo site_url('')?>" + controller + '/tambah';
+var urlsavefile = "<?php echo site_url('')?>" + controller + '/tambahfile';
+var urlupdate = "<?php echo site_url('')?>" + controller + '/update';
+var urlupdatefile = "<?php echo site_url('')?>" + controller + '/updatefile';
+var urlhapus = "<?php echo site_url('')?>" + controller + '/hapus';
+var urlunduh = "<?php echo site_url('')?>" + controller + '/unduh';
+
+     $(".<?php echo $aktifgrup ?>").addClass("active");
+     $(".<?php echo $aktifmenu ?>").addClass("active");
+
     $(document).ready(function() {
+    
+        $('[data-toggle="tooltip"]').tooltip();
 
         table = $('#table').DataTable({
             "processing": true,
+            "serverSide": true,
             "ajax": {
                 "url": urlmaindata,
                 "type": "POST",
@@ -91,7 +67,6 @@ exit: 'animated fadeOutUp'
         save_method = 'add';
         $('#form-data')[0].reset();
         CKEDITOR.instances.artikelx.setData('');
-
         $('#modal-data').modal('show');
         $('.modal-title').text('Tambahkan Data');
     }
@@ -148,11 +123,9 @@ exit: 'animated fadeOutUp'
                     $('#modal-data').modal('hide');
                     reload_table();
                 }
-
-
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert('Error on process');
+                console.log('Error on process');
             }
         });
     }
@@ -250,5 +223,32 @@ exit: 'animated fadeOutUp'
         });
 
     }
+
+    function showNotif(title, msg, jenis) {
+        $.notify({
+            title: '<strong>' + title + '</strong>',
+            message: msg
+        }, {
+            type: jenis,
+            z_index: 2000,
+            allow_dismiss: true,
+            delay: 10,
+            animate: {
+                enter: 'animated fadeInDown',
+                exit: 'animated fadeOutUp'
+            },
+        }, );
+    };
+
+    $(function() {
+        CKEDITOR.replace('artikelx')
+            //$('#tugas').wysihtml5()
+    })
+
+    //   $(function(){
+//   $.each(column, function (i, item) {
+//       $("#repeat").append("<th class='sorting' tabindex='0' aria-controls='table' rowspan='1' colspan='1' style='width: 226px;' aria-sort='ascending' aria-label=': activate to sort column descending'>"+item.field+ "</th>");
+//     });
+// });
 
 </script>      

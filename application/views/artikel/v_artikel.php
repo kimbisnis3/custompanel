@@ -92,13 +92,11 @@
         <div class="table-responsive mailbox-messages">
           <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
-              <tr>
-                <th width="2%">No.</th>
+              <tr id="repeat">
                 <th>Judul</th>
                 <th>Artikel</th>
-                <th>Gambar</th>
-                <th>Ket</th>
-                <th width="12%">Opsi</th>
+                <th>Keterangan</th>
+                <th>Opsi</th>
               </tr>
             </thead>
             <tbody>
@@ -116,33 +114,27 @@ $this->load->view('template/js');
 
 <script type="text/javascript">
   var controller = 'artikel';
-  var table;
-  var idx = -1;
-  var urlmaindata = "<?php echo site_url('') ?>" + controller + '/setView';
-  var urledit = "<?php echo site_url('')?>" + controller + '/edit';
-  var urlsave = "<?php echo site_url('')?>" + controller + '/tambah';
-  var urlsavefile = "<?php echo site_url('')?>" + controller + '/tambahfile';
-  var urlupdate = "<?php echo site_url('')?>" + controller + '/update';
-  var urlupdatefile = "<?php echo site_url('')?>" + controller + '/updatefile';
-  var urlhapus = "<?php echo site_url('')?>" + controller + '/hapus';
-  var urlunduh = "<?php echo site_url('')?>" + controller + '/unduh';
 
-  var column  = [{
-                    "data": "no"
-                }, 
+  var column  = [
                 {
-                    "data": "judul"
+                    "data": "judul",
+                    "field": "Judul"
                 },
                 {
-                    "data": "artikel"
+                    "data": "artikel",
+                    "field": "Artikel"
                 },
                 {
-                    "data": "ket"
+                    "data": "ket",
+                    "field": "Keterangan"
                 }, 
                 {
-                    "data": "action"
+                    "data": "option",
+                    "field": "Opsi"
                 }
             ];
+
+
 </script>
         
 
