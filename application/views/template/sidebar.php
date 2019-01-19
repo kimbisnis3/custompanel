@@ -12,7 +12,6 @@
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
-    </form>
     <ul class="sidebar-menu">
       <li class="header">FRONT END WEBSITE</li>
       <li class="treeview artikel">
@@ -26,38 +25,37 @@
         </a>
       </li>
       <li class="treeview master">
-          <a href="#">
-            <i class="fa fa-cog"></i>
-            <span>Pengaturan Tampilan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="link">
+        <a href="#">
+          <i class="fa fa-cog"></i>
+          <span>Pengaturan Tampilan</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="link">
             <a href="<?php echo base_url('link'); ?>"><i class="fa fa-circle-o"></i> Link Terkait</a></li>
           </ul>
           <ul class="treeview-menu">
             <li class="element">
-            <a href="<?php echo base_url('element'); ?>"><i class="fa fa-circle-o"></i> Element Gambar</a></li>
-          </ul>
-          <ul class="treeview-menu">
-            <li class="elementteks">
-            <a href="<?php echo base_url('elementteks'); ?>"><i class="fa fa-circle-o"></i> Element Teks</a></li>
-          </ul>
-          <ul class="treeview-menu">
-            <li class="sekolah">
-            <a href="<?php echo base_url('sekolah'); ?>"><i class="fa fa-circle-o"></i> Profil Sekolah</a></li>
-          </ul>
-          <ul class="treeview-menu">
-            <li class="slideshow">
-            <a href="<?php echo base_url('slideshow'); ?>"><i class="fa fa-circle-o"></i> Slideshow</a></li>
-          </ul>
-        </li>
-      
-      
-    </ul>
-  </section>
-  
-</aside>
-<div class="content-wrapper">
+              <a href="<?php echo base_url('element'); ?>"><i class="fa fa-circle-o"></i> Element Gambar</a></li>
+            </ul>
+            <ul class="treeview-menu">
+              <li class="elementteks">
+                <a href="<?php echo base_url('elementteks'); ?>"><i class="fa fa-circle-o"></i> Element Teks</a></li>
+              </ul>
+              <ul class="treeview-menu">
+                <li class="sekolah">
+                  <a href="<?php echo base_url('sekolah'); ?>"><i class="fa fa-circle-o"></i> Profil Sekolah</a></li>
+                </ul>
+                <ul class="treeview-menu">
+                  <li class="slideshow">
+                    <a href="<?php echo base_url('slideshow'); ?>"><i class="fa fa-circle-o"></i> Slideshow</a></li>
+                  </ul>
+                </li>
+                
+                
+              </ul>
+            </section>
+            
+          </aside>
