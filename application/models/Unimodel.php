@@ -37,12 +37,14 @@ class Unimodel extends CI_Model{
     function update($table, $data, $where)
     {
         $this->db->update($table, $data, $where);
+        return $this->db->affected_rows();
     }
 
     function delete($table, $where)
     {
         $this->db->where($where);
         $this->db->delete($table);
+        return $this->db->affected_rows();
     }
 
 

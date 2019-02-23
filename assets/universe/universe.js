@@ -26,9 +26,9 @@ function conpage(titlepage, menu, groupmenu) {
 
 function dtb(idtb, url, data, col, des = false) {
     idtb = $('#' + idtb).DataTable({
-        "processing": true,
-        "serverSide": true,
-        "destroy": des,
+        // "processing": true,
+        // "serverSide": true,
+        // "destroy": des,
         "ajax": {
             "url": url,
             "type": "POST",

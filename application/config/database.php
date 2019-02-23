@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$active_group = 'bw_off';
+$active_group = 'cp';
 $query_builder = TRUE;
 
 $db['default'] = array(
@@ -26,12 +26,12 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-$db['bw_off'] = array(
+$db['cp'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'bayarwifi',
+	'database' => 'cp',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<title>GOPANEL</title>
+	<title>My Panel</title>
 	<?php
 	$this->load->view('template/head');
 	?>
@@ -19,7 +19,7 @@
 <body class="hold-transition">
 <div class="login-box">
 	<div class="login-logo">
-		<b>GO PANEL</b> <br>
+		<b>My Panel</b> <br>
 	</div>
 	<!-- /.login-logo -->
 	<div>

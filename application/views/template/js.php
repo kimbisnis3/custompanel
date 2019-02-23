@@ -21,5 +21,27 @@
 <script src="<?php echo base_url(); ?>assets/lte/plugins/ckeditor/ckeditor.js"></script>
 <script src="<?php echo base_url(); ?>assets/lte/plugins/pace/pace.js"></script>
 <script src="<?php echo base_url() ?>assets/lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url('') ?>assets/universe/universe.js"></script> 
+<!-- <script type="text/javascript" src="<?php echo base_url('') ?>assets/universe/universe.js"></script>  -->
+<script type="text/javascript">
+	$(function() {
+	    CKEDITOR.replace('artikelx')
+	})
+	function showNotif(title, msg, jenis) {
+	    $.notify({
+	        title: '<strong>' + title + '</strong>',
+	        message: msg
+	    }, {
+	        type: jenis,
+	        z_index: 2000,
+	        allow_dismiss: true,
+	        delay: 10,
+	        animate: {
+	            enter: 'animated fadeInDown',
+	            exit: 'animated fadeOutUp'
+	        },
+	    }, );
+	};
+	$(".<?php echo $aktifgrup ?>").addClass("active");
+	$(".<?php echo $aktifmenu ?>").addClass("active");
+</script>
      
