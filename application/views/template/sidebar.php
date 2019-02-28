@@ -34,28 +34,30 @@
         </a>
         <ul class="treeview-menu">
           <li class="link">
-            <a href="<?php echo base_url('link'); ?>"><i class="fa fa-circle-o"></i> Link Terkait</a></li>
-          </ul>
-          <ul class="treeview-menu">
-            <li class="element">
-              <a href="<?php echo base_url('element'); ?>"><i class="fa fa-circle-o"></i> Element Gambar</a></li>
-            </ul>
-            <ul class="treeview-menu">
-              <li class="elementteks">
-                <a href="<?php echo base_url('elementteks'); ?>"><i class="fa fa-circle-o"></i> Element Teks</a></li>
-              </ul>
-              <ul class="treeview-menu">
-                <li class="sekolah">
-                  <a href="<?php echo base_url('sekolah'); ?>"><i class="fa fa-circle-o"></i> Profil Sekolah</a></li>
-                </ul>
-                <ul class="treeview-menu">
-                  <li class="slideshow">
-                    <a href="<?php echo base_url('slideshow'); ?>"><i class="fa fa-circle-o"></i> Slideshow</a></li>
-                  </ul>
-                </li>
-                
-                
-              </ul>
-            </section>
-            
-          </aside>
+            <a href="<?php echo base_url('link'); ?>"><i class="fa fa-circle-o"></i> Link Terkait</a>
+          </li>
+        </ul>
+        <ul class="treeview-menu">
+          <li class="element">
+            <a href="<?php echo base_url('element'); ?>"><i class="fa fa-circle-o"></i> Element Gambar</a>
+          </li>
+        </ul>
+        <ul class="treeview-menu">
+          <li class="elementteks">
+            <a href="<?php echo base_url('elementteks'); ?>"><i class="fa fa-circle-o"></i> Element Teks</a>
+          </li>
+        </ul>
+        <ul class="treeview-menu">
+          <li class="sekolah">
+            <a href="<?php echo base_url('sekolah'); ?>"><i class="fa fa-circle-o"></i> Profil Sekolah</a>
+          </li>
+        </ul>
+        <ul class="treeview-menu">
+          <li class="slideshow">
+            <a href="<?php echo base_url('slideshow'); ?>"><i class="fa fa-circle-o"></i> Slideshow</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</aside>

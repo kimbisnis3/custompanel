@@ -3,10 +3,10 @@ $this->load->view('template/head');
 $this->load->view('template/topbar');
 $this->load->view('template/sidebar');
 ?>
-<div class="content-wrapper">
+<div class="content-wrapper" ng-controller="artikel">
   <section class="content-header">
     <h1 class="title">
-    <?php echo $title; ?>
+    {{titlepage}}
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo site_url(); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -48,7 +48,7 @@ $this->load->view('template/sidebar');
                   <input type="text" class="form-control" name="artikel_ket" >
                 </div>
                 <div class="form-group">
-                  <input type="text" name="path" id="path">
+                  <input type="hidden" name="path" id="path">
                 </div>
               </div>
             </div>
@@ -112,6 +112,10 @@ $this->load->view('template/sidebar');
   $this->load->view('template/js');
   ?>
   <script type="text/javascript">
+  app.controller('artikel', function($scope) {
+      $scope.titlepage = 'gagagaag';
+      $scope.obj = {};
+    });
   var controller = 'artikel';
   var table;
   var idx = -1;
@@ -154,9 +158,41 @@ $this->load->view('template/sidebar');
       });
   });
 
+
   function refresh() {
       table.ajax.reload(null, false);
       idx = -1;
+  }
+
+  function dest() {
+    table.destroy();
+    table = $('#table').DataTable({
+          "processing": true,
+          "ajax": {
+              "url": urlmaindata,
+              "type": "POST",
+              "data": {}
+          },
+          "columns": [{
+                  "data": "no"
+              }, 
+              {
+                  "data": "artikel_judul"
+              },
+              {
+                  "data": "artikel_artikel"
+              }, 
+              {
+                  "data": "artikel_image"
+              }, 
+              {
+                  "data": "artikel_ket"
+              }, 
+              {
+                  "data": "action"
+              }
+          ]
+      });
   }
 
   function add_data() {

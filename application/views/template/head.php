@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="uniapp">
     <head>
         <meta charset="UTF-8">
         <title class="title"></title>
@@ -11,9 +11,9 @@
         <link href="<?php echo base_url() ?>assets/lte/dist/css/lte.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url() ?>assets/lte/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?php echo base_url()?>assets/lte/plugins/datatables/dataTables.bootstrap.css">
-        <link href="<?php echo base_url() ?>assets/lte/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+        <!-- <link href="<?php echo base_url() ?>assets/lte/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" /> -->
         <link href="<?php echo base_url() ?>assets/lte/plugins/animate/animate.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url() ?>assets/lte/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="<?php echo base_url() ?>'assets/lte/plugins/datepicker/datepicker3.css">
+        <!-- <link rel="stylesheet" href="<?php echo base_url() ?>'assets/lte/plugins/datepicker/datepicker3.css"> -->
         <link href="<?php echo base_url() ?>assets/lte/plugins/pace/pace.css" rel="stylesheet" type="text/css" />
     </head>
