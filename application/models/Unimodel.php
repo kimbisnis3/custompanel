@@ -2,6 +2,12 @@
 class Unimodel extends CI_Model{
    
 
+    function que_all($sql)
+    {
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
     function getdata($table)
     {
         $query = $this->db->get($table);

@@ -28,24 +28,16 @@ $this->load->view('template/sidebar');
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Judul</label>
-                  <input type="hidden" name="artikel_id">
-                  <input type="text" class="form-control" name="artikel_judul">
+                  <input type="hidden" name="id">
+                  <input type="text" class="form-control" name="judul">
                 </div>
                 <div class="form-group">
                   <label>Gambar</label>
-                  <input type="file" class="form-control" name="artikel_image" id="artikel_image" >
-                </div>
-                <div class="form-group">
-                  <label>Artikel</label>
-                  <textarea class="form-control" rows="7" name="artikel_artikelx" id="artikelx"></textarea>
-                </div>
-                <div class="form-group" style="display : none;">
-                  <label>Artikel</label>
-                  <textarea class="form-control" rows="7" name="artikel_artikel" id="artikel"></textarea>
+                  <input type="file" class="form-control" name="image" id="image" >
                 </div>
                 <div class="form-group">
                   <label>Keterangan</label>
-                  <input type="text" class="form-control" name="artikel_ket" >
+                  <input type="text" class="form-control" name="ket" >
                 </div>
                 <div class="form-group">
                   <input type="hidden" name="path" id="path">
@@ -91,7 +83,6 @@ $this->load->view('template/sidebar');
                   <tr id="repeat">
                     <th>No</th>
                     <th>Judul</th>
-                    <th>Artikel</th>
                     <th>Image</th>
                     <th>Keterangan</th>
                     <th>Opsi</th>
@@ -112,7 +103,7 @@ $this->load->view('template/sidebar');
   $this->load->view('template/js');
   ?>
   <script type="text/javascript">
-  var controller = 'artikel';
+  var controller = 'slideshow';
   var table;
   var idx = -1;
   var urlmaindata = "<?php echo site_url('') ?>" + controller + '/setView';
@@ -123,6 +114,7 @@ $this->load->view('template/sidebar');
   var urlupdatefile = "<?php echo site_url('')?>" + controller + '/updatefile';
   var urlhapus = "<?php echo site_url('')?>" + controller + '/hapus';
   var urlunduh = "<?php echo site_url('')?>" + controller + '/unduh';
+  var urlaktif = "<?php echo site_url('')?>" + controller + '/aktif';
 
   $(document).ready(function() {
       table = $('#table').DataTable({
@@ -136,16 +128,13 @@ $this->load->view('template/sidebar');
                   "data": "no"
               }, 
               {
-                  "data": "artikel_judul"
+                  "data": "judul"
               },
               {
-                  "data": "artikel_artikel"
+                  "data": "image"
               }, 
               {
-                  "data": "artikel_image"
-              }, 
-              {
-                  "data": "artikel_ket"
+                  "data": "ket"
               }, 
               {
                   "data": "action"
@@ -160,41 +149,9 @@ $this->load->view('template/sidebar');
       idx = -1;
   }
 
-  function dest() {
-    table.destroy();
-    table = $('#table').DataTable({
-          "processing": true,
-          "ajax": {
-              "url": urlmaindata,
-              "type": "POST",
-              "data": {}
-          },
-          "columns": [{
-                  "data": "no"
-              }, 
-              {
-                  "data": "artikel_judul"
-              },
-              {
-                  "data": "artikel_artikel"
-              }, 
-              {
-                  "data": "artikel_image"
-              }, 
-              {
-                  "data": "artikel_ket"
-              }, 
-              {
-                  "data": "action"
-              }
-          ]
-      });
-  }
-
   function add_data() {
       save_method = 'add';
       $('#form-data')[0].reset();
-      CKEDITOR.instances.artikelx.setData('');
 
       $('#modal-data').modal('show');
       $('.modal-title').text('Tambahkan Data');
@@ -211,14 +168,10 @@ $this->load->view('template/sidebar');
           },
           dataType: "JSON",
           success: function(data) {
-              $('[name="artikel_id"]').val(data.artikel_id);
-              $('[name="artikel_judul"]').val(data.artikel_judul);
-              $('[name="artikel_ket"]').val(data.artikel_ket);
-              $('[name="path"]').val('.' + data.artikel_image);
-              CKEDITOR.instances.artikelx.setData(data.artikel_artikel);
-              // $.each( data, function( key, value ) {
-              //   $('[name="'+key+'"]').val(data[key]);
-              // });
+              $('[name="id"]').val(data.id);
+              $('[name="judul"]').val(data.judul);
+              $('[name="ket"]').val(data.ket);
+              $('[name="path"]').val('.' + data.image);
               
               $('#modal-data').modal('show');
               $('.modal-title').text('Edit Data');
@@ -230,45 +183,8 @@ $this->load->view('template/sidebar');
       });
   }
 
-  function save() {
-      var url;
-      artikel = CKEDITOR.instances['artikelx'].getData();
-      $('#artikel').val(artikel);
-      if (save_method == 'add') {
-          url = urlsave;
-          notif = showNotif('Sukses', 'Data Berhasil Ditambahkan', 'success');
-      } else {
-          url = urlupdate;
-          notif = showNotif('Sukses', 'Data Berhasil Diubah', 'success');
-      }
-      $.ajax({
-          url: url,
-          type: "POST",
-          data: $('#form-data').serialize(),
-          dataType: "JSON",
-          success: function(data) {
-              if (data.sukses == 'success') {
-                  $('#modal-data').modal('hide');
-                  refresh();
-                  save_method == 'add' ? showNotif('Sukses', 'Data Berhasil Ditambahkan', 'success') : showNotif('Sukses', 'Data Berhasil Diubah', 'success')
-              } else if (data.sukses == 'fail') {
-                  $('#modal-data').modal('hide');
-                  refresh();
-                  showNotif('Sukses', 'Tidak Ada Perubahan', 'success')
-              }
-
-
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-              alert('Error on process');
-          }
-      });
-  }
-
   function savefile() {
       var url;
-      artikel = CKEDITOR.instances['artikelx'].getData();
-      $('#artikel').val(artikel);
       if (save_method == 'add') {
           url = urlsavefile;
       } else {
@@ -295,29 +211,6 @@ $this->load->view('template/sidebar');
                   showNotif('Sukses', 'Tidak Ada Perubahan', 'success')
               }
 
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-              alert('Error on process');
-          }
-      });
-  }
-
-  function unduh_data(id) {
-      $.ajax({
-          url: urlunduh,
-          type: "POST",
-          data: {
-              id: id
-          },
-          dataType: "JSON",
-          success: function(data) {
-              var unduhdata = (data.unduh);
-              if (data.sukses) {
-                  showNotif('Sukses', 'File Di Unduh', 'success');
-                  window.open("<?php echo site_url('')?>" + unduhdata);
-              } else {
-                  showNotif('Perhatian', 'File Tidak Ada', 'danger');
-              }
           },
           error: function(jqXHR, textStatus, errorThrown) {
               alert('Error on process');
@@ -355,7 +248,31 @@ $this->load->view('template/sidebar');
               alert('Error on process');
           }
       });
+  }
 
+  function aktif_data(id) {
+      $.ajax({
+          url: urlaktif,
+          type: "POST",
+          dataType: "JSON",
+          data: {
+              id: id,
+          },
+          success: function(data) {
+              // $('#modal-konfirmasi').modal('hide');
+              if (data.sukses == 'success') {
+                  refresh();
+                  showNotif('Sukses', 'Data Berhasil Diubah', 'success')
+              } else if (data.sukses == 'fail') {
+                  // $('#modal-data').modal('hide');
+                  refresh();
+                  showNotif('Gagal', 'Data Gagal Diubah', 'danger')
+              }
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              alert('Error on process');
+          }
+      });
   }
   </script>
 </body>

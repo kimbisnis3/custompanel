@@ -14,14 +14,29 @@
     </div>
     <ul class="sidebar-menu">
       <li class="header">FRONT END WEBSITE</li>
-      <li class="treeview artikel">
-        <a href="<?php echo site_url('artikel'); ?>">
-          <i class="fa fa-file-text-o"></i> <span>Artikel</span>
+      <li class="treeview berita">
+        <a href="<?php echo site_url('berita'); ?>">
+          <i class="fa fa-file-text-o"></i> <span>Berita</span>
         </a>
       </li>
-      <li class="treeview users">
-        <a href="<?php echo site_url('users'); ?>">
-          <i class="fa fa-key"></i> <span>Users</span>
+      <li class="treeview ktgproduk">
+        <a href="<?php echo site_url('ktgproduk'); ?>">
+          <i class="fa fa-file-text-o"></i> <span>Kategori Produk</span>
+        </a>
+      </li>
+      <li class="treeview produk">
+        <a href="<?php echo site_url('produk'); ?>">
+          <i class="fa fa-file-text-o"></i> <span>Produk</span>
+        </a>
+      </li>
+      <li class="treeview ktgportofolio">
+        <a href="<?php echo site_url('ktgportofolio'); ?>">
+          <i class="fa fa-file-text-o"></i> <span>Kategori Portofolio</span>
+        </a>
+      </li>
+      <li class="treeview user">
+        <a href="<?php echo site_url('user'); ?>">
+          <i class="fa fa-key"></i> <span>User</span>
         </a>
       </li>
       <li class="treeview master">
@@ -33,23 +48,13 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="link">
-            <a href="<?php echo base_url('link'); ?>"><i class="fa fa-circle-o"></i> Link Terkait</a>
-          </li>
-        </ul>
-        <ul class="treeview-menu">
-          <li class="element">
-            <a href="<?php echo base_url('element'); ?>"><i class="fa fa-circle-o"></i> Element Gambar</a>
+          <li class="elementgambar">
+            <a href="<?php echo base_url('elementgambar'); ?>"><i class="fa fa-circle-o"></i> Element Gambar</a>
           </li>
         </ul>
         <ul class="treeview-menu">
           <li class="elementteks">
             <a href="<?php echo base_url('elementteks'); ?>"><i class="fa fa-circle-o"></i> Element Teks</a>
-          </li>
-        </ul>
-        <ul class="treeview-menu">
-          <li class="sekolah">
-            <a href="<?php echo base_url('sekolah'); ?>"><i class="fa fa-circle-o"></i> Profil Sekolah</a>
           </li>
         </ul>
         <ul class="treeview-menu">

@@ -167,9 +167,17 @@
 	})
 
 	$(function() {
-	    CKEDITOR.replace('artikelx')
+		if ($('#artikelx').length) {
+	    	CKEDITOR.replace('artikelx')
+		}
 	})
 
+	function select2() {
+		$('.select2').select2({
+		  placeholder: 'Select an option'
+		});
+	}
+	
 	function showNotif(title, msg, jenis) {
 	    $.notify({
 	        title: '<strong>' + title + '</strong>',

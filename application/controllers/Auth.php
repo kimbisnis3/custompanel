@@ -18,14 +18,14 @@ class Auth extends CI_Controller{
         $password = $this->input->post('pass');
         $where = array(
             'aktif'     => 't',
-            'username' => $username,
-            'pass'      => md5($password),
+            'username'  => $username,
+            'password'  => md5($password),
             );
-        $cek = $this->M_auth->cek_auth("tuser",$where)->num_rows();
+        $cek = $this->M_auth->cek_auth("t_user",$where)->num_rows();
         if($cek > 0){
             $this->db->trans_start();
             $session_kode = array(
-                'lastin'        => 'now()' 
+                'lastlogin' => 'now()' 
             );
             $wheresession = array(
                 'username' => $username,
@@ -37,9 +37,8 @@ class Auth extends CI_Controller{
                 'status'    => "online",
                 'in'        => TRUE,
                 'id'        => $result->id,
-                'namafull'  => $result->namafull,
+                'nama'      => $result->namafull,
                 'alamat'    => $result->nik,
-                'phone'     => $result->class,
             );
 
             $this->session->set_userdata($data_session);
@@ -57,14 +56,6 @@ class Auth extends CI_Controller{
     }
     
     function logout(){
-         $username = $this->session->userdata('username');
-         $session_kode = array(
-                'lastout'       => 'now()'
-            );
-            $wheresession = array(
-                'username' => $username,
-            );
-            $this->M_auth->sessionkodeup($wheresession, $session_kode);
         $this->session->sess_destroy();
         redirect(base_url('auth'));
     }
