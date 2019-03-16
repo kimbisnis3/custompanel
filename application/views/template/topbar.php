@@ -3,7 +3,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo site_url(''); ?>" class="logo">
+    <a href="<?php echo site_url('landingpage'); ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>My</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -35,10 +35,10 @@
                 <img src="gambar/logo.png" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $this->session->userdata("namafull"); ?>
+                  <?php echo $this->session->userdata("nama"); ?>
                   <span class="hidden-xs"> </span>
                   <?php 
-                    $nama_user = $this->session->userdata("namafull");
+                    $nama_user = $this->session->userdata("nama");
 
                    ?>
                 
@@ -48,7 +48,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo base_url('users'); ?>" class="btn btn-success btn-flat"><i class="fa fa-user" aria-hidden="true"></i> User</a>
+                  <a href="<?php echo base_url('user'); ?>" class="btn btn-success btn-flat"><i class="fa fa-user" aria-hidden="true"></i> User</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo site_url('auth/logout'); ?>" class="btn btn-warning btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>

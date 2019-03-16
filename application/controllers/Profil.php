@@ -10,7 +10,7 @@ class Profil extends CI_Controller {
     public $indexpage   = 'profil/v_profil';
     function __construct() {
         parent::__construct();
-        // include(APPPATH.'libraries/sessionakses.php');
+        include(APPPATH.'libraries/sessionakses.php');
         $title      = $this->judul;
     }
     public function index(){

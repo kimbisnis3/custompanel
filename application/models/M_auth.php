@@ -12,11 +12,11 @@ class M_auth extends CI_Model{
         {
         $sql    = 
         "SELECT
-            tuser.*
+            t_user.*
         FROM
-            tuser
+            t_user
         WHERE 
-            tuser.username='$username'
+            t_user.username='$username'
         ";
 
         $query = $this->db->query($sql);
@@ -25,6 +25,6 @@ class M_auth extends CI_Model{
 
     public function sessionkodeup($wheresession, $session_kode)
     {
-        $this->db->update('tuser', $session_kode, $wheresession);
+        $this->db->update('t_user', $session_kode, $wheresession);
     }
 }

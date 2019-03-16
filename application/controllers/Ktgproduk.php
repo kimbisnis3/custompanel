@@ -10,7 +10,7 @@ class Ktgproduk extends CI_Controller {
     public $indexpage   = 'ktgproduk/v_ktgproduk';
     function __construct() {
         parent::__construct();
-        // include(APPPATH.'libraries/sessionakses.php');
+        include(APPPATH.'libraries/sessionakses.php');
         $title      = $this->judul;
     }
     public function index(){

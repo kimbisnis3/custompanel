@@ -4,8 +4,8 @@ class Auth extends CI_Controller{
 
     function __construct(){
         parent::__construct();
-
-        $this->load->model('M_auth');
+        
+        $this->load->model('Unimodel');
 
     }
 
@@ -17,11 +17,11 @@ class Auth extends CI_Controller{
         $username = $this->input->post('username');
         $password = $this->input->post('pass');
         $where = array(
-            'aktif'     => 't',
+            'aktif'     => '1',
             'username'  => $username,
-            'password'  => md5($password),
+            'password'  => $password,
             );
-        $cek = $this->M_auth->cek_auth("t_user",$where)->num_rows();
+        $cek = $this->Unimodel->cek_auth("t_user",$where)->num_rows();
         if($cek > 0){
             $this->db->trans_start();
             $session_kode = array(
@@ -30,15 +30,15 @@ class Auth extends CI_Controller{
             $wheresession = array(
                 'username' => $username,
             );
-            $this->M_auth->sessionkodeup($wheresession, $session_kode);
-            $result = $this->M_auth->datauser($username);
+            $this->Unimodel->sessionkodeup($wheresession, $session_kode);
+            $result = $this->Unimodel->datauser($username);
             $data_session = array(
                 'username'  => $username,
                 'status'    => "online",
                 'in'        => TRUE,
                 'id'        => $result->id,
-                'nama'      => $result->namafull,
-                'alamat'    => $result->nik,
+                'nama'      => $result->nama,
+                'alamat'    => $result->alamat,
             );
 
             $this->session->set_userdata($data_session);

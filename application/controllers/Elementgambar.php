@@ -10,7 +10,7 @@ class Elementgambar extends CI_Controller {
     public $indexpage   = 'elementgambar/v_elementgambar';
     function __construct() {
         parent::__construct();
-        // include(APPPATH.'libraries/sessionakses.php');
+        include(APPPATH.'libraries/sessionakses.php');
         $title      = $this->judul;
     }
     public function index(){

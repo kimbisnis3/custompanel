@@ -10,7 +10,7 @@ class Elementteks extends CI_Controller {
     public $indexpage   = 'elementteks/v_elementteks';
     function __construct() {
         parent::__construct();
-        // include(APPPATH.'libraries/sessionakses.php');
+        include(APPPATH.'libraries/sessionakses.php');
         $title      = $this->judul;
     }
     public function index(){

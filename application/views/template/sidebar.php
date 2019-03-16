@@ -16,27 +16,32 @@
       <li class="header">FRONT END WEBSITE</li>
       <li class="treeview berita">
         <a href="<?php echo site_url('berita'); ?>">
-          <i class="fa fa-file-text-o"></i> <span>Berita</span>
+          <i class="fa fa-newspaper-o"></i> <span>Berita</span>
         </a>
       </li>
       <li class="treeview profil">
         <a href="<?php echo site_url('profil'); ?>">
-          <i class="fa fa-file-text-o"></i> <span>Profil</span>
+          <i class="fa fa-user"></i> <span>Profil</span>
         </a>
       </li>
       <li class="treeview ktgproduk">
         <a href="<?php echo site_url('ktgproduk'); ?>">
-          <i class="fa fa-file-text-o"></i> <span>Kategori Produk</span>
+          <i class="fa fa-link"></i> <span>Kategori Produk</span>
         </a>
       </li>
       <li class="treeview produk">
         <a href="<?php echo site_url('produk'); ?>">
-          <i class="fa fa-file-text-o"></i> <span>Produk</span>
+          <i class="fa fa-dropbox"></i> <span>Produk</span>
         </a>
       </li>
       <li class="treeview ktgportofolio">
         <a href="<?php echo site_url('ktgportofolio'); ?>">
-          <i class="fa fa-file-text-o"></i> <span>Kategori Portofolio</span>
+          <i class="fa fa-link"></i> <span>Kategori Portofolio</span>
+        </a>
+      </li>
+      <li class="treeview portofolio">
+        <a href="<?php echo site_url('portofolio'); ?>">
+          <i class="fa fa-file-text-o"></i> <span>Portofolio</span>
         </a>
       </li>
       <li class="treeview user">

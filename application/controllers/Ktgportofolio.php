@@ -10,7 +10,7 @@ class Ktgportofolio extends CI_Controller {
     public $indexpage   = 'ktgportofolio/v_ktgportofolio';
     function __construct() {
         parent::__construct();
-        // include(APPPATH.'libraries/sessionakses.php');
+        include(APPPATH.'libraries/sessionakses.php');
         $title      = $this->judul;
     }
     public function index(){

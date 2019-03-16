@@ -1,29 +1,37 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Slideshow extends CI_Controller {
+class Portofolio extends CI_Controller {
     
-    public $table       = 't_config_image';
-    public $judul       = 'Slideshow';
-    public $aktifgrup   = 'master';
-    public $aktifmenu   = 'slideshow';
-    public $foldername  = 'slideshow';
-    public $indexpage   = 'slideshow/v_slideshow';
+    public $table       = 'm_portofolio';
+    public $judul       = 'Portofolio';
+    public $aktifgrup   = 'portofolio';
+    public $aktifmenu   = 'portofolio';
+    public $foldername  = 'portofolio';
+    public $indexpage   = 'portofolio/v_portofolio';
     function __construct() {
         parent::__construct();
-        include(APPPATH.'libraries/sessionakses.php');
+        // include(APPPATH.'libraries/sessionakses.php');
         $title      = $this->judul;
     }
     public function index(){
         $data['title']      = $this->judul;
         $data['aktifgrup']  = $this->aktifgrup;
         $data['aktifmenu']  = $this->aktifmenu;
+        $data['ktgportofolio']  = $this->Unimodel->getdata('m_ktgportofolio');
         $title      = $this->judul;
         $this->load->view($this->indexpage, $data);  
     }
 
     public function setView(){
-        $w['tipe']  = "ss";
-        $result     = $this->Unimodel->getdatawall($this->table,$w);
+        $sql        = "SELECT
+                        m_portofolio.*,
+                        m_ktgportofolio.judul AS kategori
+                    FROM
+                        m_portofolio
+                    JOIN m_ktgportofolio ON m_ktgportofolio.id = m_portofolio.ref_ktgportofolio
+                    WHERE
+                        m_ktgportofolio.aktif = 1";
+        $result     = $this->Unimodel->que_all($sql);
         $list       = array();
         $no         = 1;
         foreach ($result as $r) {
@@ -36,6 +44,9 @@ class Slideshow extends CI_Controller {
                         "no"        => $no,
                         "kode"      => $r->kode,
                         "judul"     => $r->judul,
+                        "kategori"  => $r->kategori,
+                        "subjudul"  => $r->subjudul,
+                        "artikel"   => $r->artikel,
                         "image"     => $gambar,
                         "ket"       => $r->ket,
                         "aktif"     => aktif($r->aktif),
@@ -46,6 +57,11 @@ class Slideshow extends CI_Controller {
             $no++;
         }   
         echo json_encode(array('data' => $list));
+    }
+
+    public function getKtg(){
+        $data = $this->Unimodel->getdata('m_ktgportofolio');
+        echo json_encode($data);
     }
 
     public function tambahfile()
@@ -61,15 +77,19 @@ class Slideshow extends CI_Controller {
         
         if ( ! $this->upload->do_upload('image')){
             $d['useri']     = $this->session->userdata('username');
+            $d['ref_ktgportofolio']= $this->input->post('ref_ktgportofolio');
             $d['judul']     = $this->input->post('judul');
-            $d['tipe']      = "ss";
+            $d['artikel']   = $this->input->post('artikel');
             $d['ket']       = $this->input->post('ket');
+            $d['slug']      = slug($this->input->post('judul'));
             $insert = $this->Unimodel->save($this->table,$d);
         }else{
             $d['useri']     = $this->session->userdata('username');
+            $d['ref_ktgportofolio']= $this->input->post('ref_ktgportofolio');
             $d['judul']     = $this->input->post('judul');
-            $d['tipe']      = "ss";
+            $d['artikel']   = $this->input->post('artikel');
             $d['ket']       = $this->input->post('ket');
+            $d['slug']      = slug($this->input->post('judul'));
             $d['image']    = $path.'/'.$this->upload->data('file_name');
            
             $insert = $this->Unimodel->save($this->table,$d);
@@ -77,7 +97,6 @@ class Slideshow extends CI_Controller {
         $r['sukses'] = ($insert > 0) ? 'success' : 'fail' ;
         echo json_encode($r);
     }
-
     public function edit()
     {
         $w['id'] = $this->input->post('id');
@@ -101,10 +120,11 @@ class Slideshow extends CI_Controller {
                 @rename("$pathfile",'.'.$path.'/'.$this->upload->data('file_name').'.'.$ext);
                 
                 $d['useru']     = $this->session->userdata('username');
-
+                $d['ref_ktgportofolio']= $this->input->post('ref_ktgportofolio');
                 $d['judul']     = $this->input->post('judul');
-                $d['tipe']      = "ss";
+                $d['artikel']   = $this->input->post('artikel');
                 $d['ket']       = $this->input->post('ket');
+                $d['slug']      = slug($this->input->post('judul'));
                 $d['image']     = $path.'/'.$this->upload->data('file_name').'.'.$ext ;
 
                 $w['id'] = $this->input->post('id');
@@ -112,9 +132,11 @@ class Slideshow extends CI_Controller {
         }else{
                 @unlink("$pathfile");
                 $d['useru']     = $this->session->userdata('username');
+                $d['ref_ktgportofolio']= $this->input->post('ref_ktgportofolio');
                 $d['judul']     = $this->input->post('judul');
-                $d['tipe']      = "ss";
+                $d['artikel']   = $this->input->post('artikel');
                 $d['ket']       = $this->input->post('ket');
+                $d['slug']      = slug($this->input->post('judul'));
                 $d['image']     = $path.'/'.$this->upload->data('file_name');
 
                 $w['id'] = $this->input->post('id');
