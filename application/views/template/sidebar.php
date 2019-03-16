@@ -19,6 +19,11 @@
           <i class="fa fa-file-text-o"></i> <span>Berita</span>
         </a>
       </li>
+      <li class="treeview profil">
+        <a href="<?php echo site_url('profil'); ?>">
+          <i class="fa fa-file-text-o"></i> <span>Profil</span>
+        </a>
+      </li>
       <li class="treeview ktgproduk">
         <a href="<?php echo site_url('ktgproduk'); ?>">
           <i class="fa fa-file-text-o"></i> <span>Kategori Produk</span>
