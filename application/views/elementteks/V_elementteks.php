@@ -100,7 +100,7 @@ $this->load->view('template/sidebar');
   $this->load->view('template/js');
   ?>
   <script type="text/javascript">
-  var controller = 'elementgambar';
+  var controller = 'elementteks ';
   var table;
   var idx = -1;
   var urlmaindata = "<?php echo site_url('') ?>" + controller + '/setView';
